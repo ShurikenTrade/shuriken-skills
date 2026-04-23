@@ -10,3 +10,4 @@ repository = "https://github.com/ShurikenTrade/shuriken-skills"
 include_dir = "0.7"
 gray_matter = { version = "0.2", default-features = false, features = ["yaml"] }
 once_cell = "1"
+serde = { version = "1", features = ["derive"] }
