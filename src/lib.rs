@@ -59,6 +59,32 @@ pub fn list() -> &'static [Skill] {
     &SKILLS
 }
 
+pub fn get(name: &str) -> Option<&'static Skill> {
+    let local = name
+        .strip_prefix(&format!("{NAMESPACE}:"))
+        .unwrap_or(name);
+    list().iter().find(|s| s.name == local)
+}
+
+pub fn render_index() -> String {
+    let mut out = String::from("# Shuriken skills\n\n");
+    out.push_str(
+        "The following guidance skills are available. Call `get_skill(name)` to load the full body of any that match the user's question.\n\n",
+    );
+    for skill in list() {
+        // Skip internal fixture skills in production rendering.
+        if skill.name.starts_with("__") {
+            continue;
+        }
+        out.push_str(&format!(
+            "- `{}` — {}\n",
+            skill.qualified_name(),
+            skill.description,
+        ));
+    }
+    out
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -74,5 +100,32 @@ mod tests {
         let skills = list();
         let any = skills.first().expect("at least one skill loaded");
         assert!(any.qualified_name().starts_with("shuriken:"));
+    }
+
+    #[test]
+    fn get_by_local_name() {
+        assert!(get("__fixture__").is_some());
+    }
+
+    #[test]
+    fn get_by_qualified_name() {
+        assert!(get("shuriken:__fixture__").is_some());
+    }
+
+    #[test]
+    fn get_unknown_returns_none() {
+        assert!(get("does-not-exist").is_none());
+    }
+
+    #[test]
+    fn render_index_contains_qualified_names_and_skips_fixtures() {
+        let rendered = render_index();
+        assert!(rendered.contains("# Shuriken skills"));
+        assert!(rendered.contains("get_skill"));
+        // Fixture is filtered out in production rendering:
+        assert!(
+            !rendered.contains("__fixture__"),
+            "fixture should not appear in render_index output"
+        );
     }
 }
