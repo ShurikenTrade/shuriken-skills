@@ -1,3 +1,10 @@
+//! Parses YAML frontmatter from SKILL.md files.
+//!
+//! The returned [`Parsed`] holds the body as a borrowed slice of the input,
+//! so callers can hold `&'static str` when the input is `&'static`. This
+//! invariant is depended on by [`crate::load_skills`] which feeds in content
+//! from `include_dir!`.
+
 use gray_matter::{engine::YAML, Matter};
 use serde::Deserialize;
 
@@ -25,16 +32,19 @@ pub fn parse(raw: &str) -> Result<Parsed<'_>, String> {
         .deserialize()
         .map_err(|e| format!("invalid frontmatter: {e}"))?;
 
-    // Find the end of the closing `---` delimiter and return the tail as a
-    // borrowed slice of `raw`, so callers can hold &'static str when `raw`
-    // is &'static.
-    let body_offset = raw
-        .find("---")
-        .and_then(|_| raw[3..].find("---"))
-        .map(|i| i + 6) // skip both delimiters
-        .ok_or_else(|| "malformed frontmatter delimiters".to_string())?;
+    if !raw.starts_with("---") {
+        return Err("missing frontmatter block".to_string());
+    }
 
-    let body = raw[body_offset..].trim_start_matches('\n');
+    // gray_matter has already validated the frontmatter block; the closing `---`
+    // must be present for `data` to have been Some. Locate the end of the
+    // closing delimiter to return the body as a borrowed slice of `raw`.
+    let after_opener = &raw[3..];
+    let closing_offset = after_opener
+        .find("---")
+        .expect("closing --- must exist if gray_matter parsed frontmatter");
+    let body_offset = 3 + closing_offset + 3;
+    let body = raw[body_offset..].trim_start_matches(&['\r', '\n'][..]);
 
     Ok(Parsed { frontmatter, body })
 }
@@ -69,5 +79,15 @@ mod tests {
     fn no_frontmatter_is_error() {
         let raw = "just a body with no frontmatter";
         assert!(parse(raw).is_err());
+    }
+
+    #[test]
+    fn body_lifetime_is_tied_to_input() {
+        const STATIC_INPUT: &str = "---\nname: foo\ndescription: bar\n---\n\nbody\n";
+        let parsed = parse(STATIC_INPUT).unwrap();
+        // This compile-time check locks in the invariant that body borrows
+        // from `raw`: if parse ever starts returning an owned String, this
+        // will fail to compile because you can't coerce String to &'static str.
+        let _static_body: &'static str = parsed.body;
     }
 }
