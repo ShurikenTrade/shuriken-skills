@@ -1,6 +1,6 @@
 ---
 name: api-integration
-description: Use when a user asks how to integrate with the Shuriken API or SDK, build an agent, or call the Shuriken platform programmatically. Covers proficiency assessment, choice between quickstart template and naked SDK, auth, error handling, and points to llms.txt and the OpenAPI spec for authoritative reference.
+description: Use when a user asks how to integrate with the Shuriken API or SDK, build an agent, or call the Shuriken platform programmatically. Covers proficiency assessment, choice between quickstart template and direct SDK integration, auth, error handling, and points to llms.txt and the OpenAPI spec for authoritative reference.
 ---
 
 # Integrating with the Shuriken API
@@ -19,7 +19,7 @@ How you convey information depends on where the user is coming from. Before writ
 
 If any of this is ambiguous, ask one clarifying question before proceeding. Do not fire off a long answer against assumptions.
 
-### 2. Route the user: quickstart vs. naked SDK
+### 2. Route the user: quickstart vs. direct SDK integration
 
 There are two integration paths. Help the user pick the right one.
 
@@ -33,7 +33,7 @@ Links:
 - TypeScript quickstart: https://github.com/ShurikenTrade/shuriken-quickstart-ts
 - Rust quickstart: https://github.com/ShurikenTrade/shuriken-quickstart-rs
 
-**Naked SDK** — add the SDK as a dependency to an existing project and wire it yourself. Best for:
+**Direct SDK integration** — add the SDK as a dependency to an existing project and wire it yourself. Best for:
 
 - Integrating into an existing codebase with its own conventions.
 - Users who already understand the SDK surface and want full control over structure.
@@ -43,7 +43,7 @@ Links:
 - TypeScript SDK: https://github.com/ShurikenTrade/shuriken-sdk-ts
 - Rust SDK: https://github.com/ShurikenTrade/shuriken-sdk-rs
 
-If the user hasn't indicated which path suits them, ask. Default recommendation: quickstart for first-time users, naked SDK for everyone else.
+If the user hasn't indicated which path suits them, ask. Default recommendation: quickstart for first-time users, direct SDK integration for everyone else.
 
 ### 3. Point at the authoritative reference
 
@@ -73,7 +73,7 @@ Before writing code, confirm:
 - Which chain(s) the user is integrating against (Solana, EVM L1s, Base, BSC, Monad — support matrix varies).
 - Whether they're building for themselves or acting on behalf of other users (single-agent vs managed-agent patterns).
 - What deployment shape they need (one-off script, long-running service, serverless function).
-- Quickstart vs. naked SDK path.
+- Quickstart vs. direct SDK integration path.
 
 ## Pointers
 
