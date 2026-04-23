@@ -39,5 +39,5 @@ The error response names the missing scope. Two valid responses:
 
 ## Pointers
 
-- Scope reference: fetch `https://docs.shuriken.trade/llms.txt` and search for "scopes"
+- Platform documentation (including scope reference): fetch `https://docs.shuriken.trade/llms.txt` and search for "scopes"
 - Related skills: `shuriken:agent-keys`, `shuriken:api-integration`

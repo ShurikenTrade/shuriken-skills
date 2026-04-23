@@ -49,7 +49,7 @@ If the user hasn't indicated which path suits them, ask. Rough default: quicksta
 
 Regardless of path, the source of truth for endpoints, schemas, and error shapes is our docs, not this skill. Fetch:
 
-- `https://docs.shuriken.trade/llms.txt` for current documentation (or `llms-full.txt` for the expanded version).
+- `https://docs.shuriken.trade/llms.txt` for the current platform documentation index — concepts, REST API, SDKs, and guides (or `llms-full.txt` for the expanded version).
 - `https://docs.shuriken.trade/api-reference/openapi.json` for exact endpoint signatures and schemas.
 
 Never guess an endpoint from memory — the API evolves.
@@ -81,6 +81,6 @@ Before writing code, confirm:
 - Rust SDK: https://github.com/ShurikenTrade/shuriken-sdk-rs
 - TypeScript quickstart: https://github.com/ShurikenTrade/shuriken-quickstart-ts
 - Rust quickstart: https://github.com/ShurikenTrade/shuriken-quickstart-rs
-- REST API reference: fetch `https://docs.shuriken.trade/llms.txt`
+- Platform documentation (concepts, REST API, SDKs, guides): fetch `https://docs.shuriken.trade/llms.txt` (or `llms-full.txt` for the expanded version)
 - OpenAPI spec: fetch `https://docs.shuriken.trade/api-reference/openapi.json`
 - Related skills: `shuriken:agent-keys`, `shuriken:scoping`

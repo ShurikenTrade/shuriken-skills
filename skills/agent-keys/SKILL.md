@@ -28,6 +28,6 @@ Otherwise, for a single-user integration (a personal trading bot, a team analyti
 
 ## Pointers
 
-- Key management reference: fetch `https://docs.shuriken.trade/llms.txt` and search for "agent keys"
+- Platform documentation (including key management): fetch `https://docs.shuriken.trade/llms.txt` and search for "agent keys"
 - OpenAPI paths: `/v1/agent-keys/*` — fetch `https://docs.shuriken.trade/api-reference/openapi.json` for current signatures
 - Related skills: `shuriken:scoping`, `shuriken:api-integration`
