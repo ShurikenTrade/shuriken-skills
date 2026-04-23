@@ -71,7 +71,6 @@ Before writing code, confirm:
 
 - Technical proficiency level (see above).
 - Which chain(s) the user is integrating against (Solana, EVM L1s, Base, BSC, Monad — support matrix varies).
-- Whether they're building for themselves or acting on behalf of other users (single-agent vs managed-agent patterns).
 - What deployment shape they need (one-off script, long-running service, serverless function).
 - Quickstart vs. direct SDK integration path.
 

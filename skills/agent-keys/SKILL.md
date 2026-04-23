@@ -23,11 +23,9 @@ Agent keys are Shuriken's credential primitive for programmatic access. They aut
 - **Rotate** periodically and after any suspected compromise. Rotation means: create the new key, deploy it to the consuming service, then revoke the old key. Not the reverse.
 - **Revoke** when an integration is retired, a contractor departs, or the key is exposed. Revocation is immediate.
 
-## Managed agents vs self-service
+## One user, one integration
 
-If the integration is an app that acts on behalf of many Shuriken users, use the managed-agent pattern: each end-user grants the app scoped access via a consent flow that mints a per-user agent key. The app stores those keys per user. Read more by fetching the managed-agents section from `https://docs.shuriken.trade/llms.txt`.
-
-Otherwise, for a single-user integration (a personal trading bot, a team analytics dashboard), the user creates the key directly and the app holds exactly one.
+An agent key belongs to a single Shuriken user. An integration holds that user's key (or the few keys that user has created for different purposes). There is no multi-tenant flow where an app mints keys on behalf of many users — every key is owned by the Shuriken account that created it.
 
 ## Pointers
 
