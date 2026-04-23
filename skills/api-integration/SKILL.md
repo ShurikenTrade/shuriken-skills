@@ -9,25 +9,25 @@ This skill tells you how to approach any question about programmatically integra
 
 ## Approach
 
-### 1. Establish proficiency before anything else
+### 1. Establish technical proficiency before anything else
 
-How you convey information depends on where the user is coming from. Before writing code or pointing at docs, figure out:
+How you convey information depends on the user's programming and software-engineering background. Before writing code or pointing at docs, figure out roughly where they sit on this spectrum:
 
-- **Experience level.** Are they a first-time Shuriken user, a developer new to crypto tooling, or an experienced integrator already familiar with our platform? Adjust vocabulary and assumed context accordingly — a seasoned integrator does not need the "what is an agent key" primer; a newcomer very much does.
-- **Language and stack.** TypeScript or Rust are the supported first-class SDKs. Python/Go/other — they will use raw HTTP against the REST API.
-- **Crypto fluency.** Do they know what a wallet, RPC, slippage, chain ID are? If not, surface those concepts before deep integration details.
+- **Absolute beginner.** New to programming, or scripting at the level of "I can run a CLI command if someone tells me exactly what to type." Needs hand-holding, concrete copy-pasteable examples, environment setup spelled out step by step.
+- **Intermediate / power user.** Comfortable with a terminal, editing config files, running scripts in a language they know. Can follow a README but will get stuck on non-obvious toolchain setup. Wants working examples they can modify.
+- **Software engineer.** Fluent in at least one language, comfortable reading types and API surfaces, will probably skim a README and dive into code. Wants reference material and precise signatures, not prose explanations.
 
-If any of this is ambiguous, ask one clarifying question before proceeding. Do not fire off a long answer against assumptions.
+Calibrate vocabulary, level of detail, and how much you show vs. tell to match this level. A software engineer does not need the "what is an environment variable" primer; an absolute beginner very much does. If the level is ambiguous, ask one clarifying question before proceeding — do not fire off a long answer against assumptions.
 
 ### 2. Route the user: quickstart vs. direct SDK integration
 
 There are two integration paths. Help the user pick the right one.
 
-**Quickstart template** — a pre-wired project scaffold that includes the SDK, env-var setup, auth wiring, a minimal example flow, and dev tooling. Best for:
+**Quickstart template** — a pre-wired project scaffold that ships runnable examples. Once the user supplies an agent key via env var, the examples work out of the box. Best for:
 
-- New users getting their first integration running end-to-end.
-- Anyone who wants a working starting point instead of assembling the pieces themselves.
-- Demos, hackathons, internal tooling spikes.
+- Users who want to play around quickly without assembling a project themselves.
+- Users who need more hand-holding — the examples act as guided, working reference code.
+- Demos, hackathons, internal tooling spikes, first-time evaluations.
 
 Links:
 - TypeScript quickstart: https://github.com/ShurikenTrade/shuriken-quickstart-ts
@@ -35,15 +35,15 @@ Links:
 
 **Direct SDK integration** — add the SDK as a dependency to an existing project and wire it yourself. Best for:
 
-- Integrating into an existing codebase with its own conventions.
-- Users who already understand the SDK surface and want full control over structure.
+- Users who already understand the SDK / API surface and want full control over structure.
+- Integrating into an existing codebase with its own conventions and tooling.
 - Library authors building higher-level abstractions on top.
 
 Links:
 - TypeScript SDK: https://github.com/ShurikenTrade/shuriken-sdk-ts
 - Rust SDK: https://github.com/ShurikenTrade/shuriken-sdk-rs
 
-If the user hasn't indicated which path suits them, ask. Default recommendation: quickstart for first-time users, direct SDK integration for everyone else.
+If the user hasn't indicated which path suits them, ask. Rough default: quickstart for absolute beginners and intermediates, direct SDK integration for software engineers who are already comfortable with the surface.
 
 ### 3. Point at the authoritative reference
 
@@ -69,7 +69,7 @@ The Shuriken API uses structured error responses with machine-readable codes. Do
 
 Before writing code, confirm:
 
-- Proficiency level (see above).
+- Technical proficiency level (see above).
 - Which chain(s) the user is integrating against (Solana, EVM L1s, Base, BSC, Monad — support matrix varies).
 - Whether they're building for themselves or acting on behalf of other users (single-agent vs managed-agent patterns).
 - What deployment shape they need (one-off script, long-running service, serverless function).
