@@ -7,9 +7,21 @@ description: Use when a user asks what an agent key can do, how Shuriken permiss
 
 Every agent key carries a set of scopes. A scope is a capability grant — read tokens, execute trades, read positions, deliver notifications. The server enforces scopes on every tool call and API endpoint; a call outside the granted scope fails with a structured authorization error.
 
+## Best practice: grant the minimum scopes the agent key actually needs
+
+This is the single most important rule for agent-key scoping. For every agent key, grant **only** the scopes the integration actively uses — nothing speculative, nothing "just in case," nothing broader than the job requires.
+
+Concretely:
+
+- Start from what the integration does on its hot path, and enumerate only those capabilities.
+- When in doubt, grant less and widen later if the integration errors on a missing scope.
+- Create a separate agent key per integration (or per purpose) rather than one fat key reused everywhere — that way each key's scope surface stays tight.
+- If a scope is required for a one-off setup step but not for steady-state operation, consider doing the setup with a broader key and then running with a narrower one.
+
+Broader scopes are a liability: a leaked key is only as dangerous as the capabilities it carries.
+
 ## Principles
 
-- **Least privilege.** Grant only what the integration needs. A read-only analytics dashboard should never hold write scopes.
 - **Separate read from write.** Read scopes are generally safe; write/execute scopes move money or send messages and deserve more scrutiny.
 - **Per-integration, not per-user-role.** A scope is a capability, not a persona. Reason about what the integration *does*, not who the user is.
 
@@ -29,7 +41,7 @@ Fetch `https://docs.shuriken.trade/llms.txt` for the current authoritative scope
 - *Read-only analytics dashboard*: read scopes only.
 - *Automated trading bot*: read scopes + trading scopes.
 - *Notification/alert service*: read scopes + delivery scopes.
-- *Full-service managed agent*: all non-administrative scopes, granted per-user at consent time.
+- *Full-service trading + notifications*: read scopes + trading scopes + delivery scopes.
 
 ## When a call fails on scope
 
