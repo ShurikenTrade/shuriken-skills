@@ -15,7 +15,7 @@ Agent keys are Shuriken's credential primitive for programmatic access. They aut
 
 ## Key lifecycle
 
-- **Create** via the authenticated user's account settings, or via the agent-key management API once bootstrapped. The key is displayed once at creation — capture it immediately.
+- **Create** at [app.shuriken.trade/agents](https://app.shuriken.trade/agents) (the authenticated user's agent-key management page), or via the agent-key management API once bootstrapped. The key is displayed once at creation — capture it immediately.
 - **Use** by passing the key in the `Authorization: Bearer <key>` header on every request (REST), or via the SDK's client constructor.
 - **Rotate** periodically and after any suspected compromise. Rotation means: create the new key, deploy it to the consuming service, then revoke the old key. Not the reverse.
 - **Revoke** when an integration is retired, a contractor departs, or the key is exposed. Revocation is immediate.
