@@ -1,0 +1,23 @@
+{
+  "name": "shuriken",
+  "displayName": "Shuriken",
+  "description": "Help coding agents integrate with the Shuriken trading platform via its API, SDK, and CLI.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Shuriken",
+    "url": "https://app.shuriken.trade"
+  },
+  "homepage": "https://github.com/ShurikenTrade/shuriken-skills",
+  "repository": "https://github.com/ShurikenTrade/shuriken-skills",
+  "license": "MIT",
+  "keywords": [
+    "trading",
+    "shuriken",
+    "agentic-trading",
+    "trading-bot",
+    "ai-trading",
+    "crypto",
+    "blockchain"
+  ],
+  "skills": "./skills/"
+}

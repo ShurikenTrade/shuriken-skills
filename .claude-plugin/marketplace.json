@@ -1,0 +1,20 @@
+{
+  "name": "shuriken",
+  "description": "Marketplace for Shuriken trading-platform integration skills",
+  "owner": {
+    "name": "Shuriken",
+    "url": "https://app.shuriken.trade"
+  },
+  "plugins": [
+    {
+      "name": "shuriken",
+      "description": "Help coding agents integrate with the Shuriken trading platform via its API, SDK, and CLI.",
+      "version": "0.2.0",
+      "source": "./",
+      "author": {
+        "name": "Shuriken",
+        "url": "https://app.shuriken.trade"
+      }
+    }
+  ]
+}
