@@ -1,0 +1,6 @@
+{
+  "name": "shuriken",
+  "description": "Help coding agents integrate with the Shuriken trading platform via its API, SDK, and CLI.",
+  "version": "0.2.0",
+  "contextFileName": "GEMINI.md"
+}
