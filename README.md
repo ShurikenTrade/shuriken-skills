@@ -1,3 +1,17 @@
+Agents can do almost everything now. Except trade.
+
+Until now.
+
+Shuriken is the infrastructure for agentic trading. Every major asset class, 24/7. Onchain tokens, perpetuals, real-world assets, pre-IPO equity, prediction markets.
+
+Plug your agent into the sources where information breaks first. Twitter, Telegram, Discord, on-chain activity. Your agent acts before the market does.
+
+Your agent only does what you permit. Granular permissions, no seed phrases in your runtime.
+
+We are at the beginning of autonomous finance.
+
+This is where it starts.
+
 # shuriken-skills
 
 Agent-consumable integration guidance for the [Shuriken](https://app.shuriken.trade) platform.
