@@ -1,3 +1,10 @@
+<img width="2400" height="290" alt="Shuriken_full_black (4)-Photoroom" src="https://github.com/user-attachments/assets/eeed33d8-82bf-448f-813b-125035ab27a4" />
+
+<div align="center" style="line-height: 1;">
+  <a href="https://discord.gg/EYMGDCQRGE" target="_blank"><img alt="Discord" src="https://img.shields.io/badge/Discord-ShurikenTrade-7289da?logo=discord&logoColor=white&color=7289da"/></a>
+  <a href="https://x.com/ShurikenTrade" target="_blank"><img alt="X Follow" src="https://img.shields.io/badge/X-ShurikenTrade-white?logo=x&logoColor=white"/></a>
+</div>
+
 Agents can do almost everything now. Except trade.
 
 Until now.
