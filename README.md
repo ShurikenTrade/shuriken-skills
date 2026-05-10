@@ -1,4 +1,4 @@
-<img width="2400" height="290" alt="Shuriken_full_black (4)-Photoroom" src="https://github.com/user-attachments/assets/eeed33d8-82bf-448f-813b-125035ab27a4" />
+<img width="2000" height="241" alt="Shuriken_full_white (1) (1)" src="https://github.com/user-attachments/assets/48a6cdf9-b7c5-4fe2-983a-1ddd46fe1ec8" />
 
 <div align="center" style="line-height: 1;">
   <a href="https://discord.gg/EYMGDCQRGE" target="_blank"><img alt="Discord" src="https://img.shields.io/badge/Discord-ShurikenTrade-7289da?logo=discord&logoColor=white&color=7289da"/></a>
